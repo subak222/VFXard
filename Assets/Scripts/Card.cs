@@ -44,6 +44,7 @@ public class Card : MonoBehaviour
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (animTime >= 1.0f && lastAnimTime < 1.0f && anim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
+            cardManager.showCard.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             lastAnimTime = 1.0f;
             anim.SetInteger("show", 0);

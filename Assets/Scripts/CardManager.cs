@@ -12,6 +12,8 @@ public class CardManager : MonoBehaviour
         public GameObject mycard;
     }
 
+    public GameObject showCard;
+
     [SerializeField]
     public Animator anim;
     [SerializeField]
