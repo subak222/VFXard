@@ -23,7 +23,6 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(cardManager.show);
         if (Input.GetMouseButtonDown(0) && cardManager.show == true)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -33,11 +32,16 @@ public class Card : MonoBehaviour
             {
                 if (hit.collider.gameObject.name == "card"+decknum.ToString())
                 {
-                    anim.SetInteger("show", decknum);
-                    cardManager.cardCount--;
-                    cardManager.anim.SetInteger("getCard", cardManager.cardCount);
-                    cardManager.show = false;
-                    gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    Debug.Log(cardManager.myCardDeck[decknum - 1].cardNumber);
+                    if (cardManager.showCardNum / 13 == cardManager.myCardDeck[decknum-1].cardNumber / 13 || cardManager.showCardNum % 13 == cardManager.myCardDeck[decknum - 1].cardNumber % 13)
+                    {
+                        anim.SetInteger("show", decknum);
+                        cardManager.cardCount--;
+                        cardManager.anim.SetInteger("getCard", cardManager.cardCount);
+                        cardManager.show = false;
+                        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                        cardManager.showCardNum = cardManager.myCardDeck[decknum - 1].cardNumber;
+                    }
                 }
             }
         }

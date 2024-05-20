@@ -24,6 +24,8 @@ public class CardManager : MonoBehaviour
     public bool show = true;
     private float lastAnimTime = 0f;
 
+    public int showCardNum;
+
     public List<int> array = new List<int>();
 
     void Start()
@@ -36,6 +38,9 @@ public class CardManager : MonoBehaviour
         }
 
         Shuffle(array);
+        showCard.GetComponent<SpriteRenderer>().sprite = cardSprites[array[0]];
+        showCardNum = array[0];
+        array.RemoveAt(0);
     }
 
     void Shuffle(List<int> array)

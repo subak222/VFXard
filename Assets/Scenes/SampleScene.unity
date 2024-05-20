@@ -528,7 +528,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1642990617, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9157e5513dfd38e489e24145b12b4a5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3912,6 +3912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4f7f5a9d78056419be10f1cf57b0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showCard: {fileID: 197045883}
   anim: {fileID: 2107558662}
   cardSprites:
   - {fileID: -1675974240, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
@@ -4013,6 +4014,7 @@ MonoBehaviour:
     mycard: {fileID: 767673111}
   cardCount: 1
   show: 1
+  showCardNum: 0
   array: 
 --- !u!4 &1341457429
 Transform:
