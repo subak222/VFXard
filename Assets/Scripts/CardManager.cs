@@ -12,12 +12,13 @@ public class CardManager : MonoBehaviour
         public GameObject mycard;
     }
 
+    GameManager gameManager;
+
     public GameObject showCard;
 
-    [SerializeField]
     public Animator anim;
     [SerializeField]
-    private Sprite[] cardSprites;
+    public Sprite[] cardSprites;
     public Card[] myCardDeck;
 
     public int cardCount = 1;
@@ -30,6 +31,8 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         anim.SetInteger("getCard", cardCount);
         anim.SetBool("nextAnim", false);
         for (int i = 0; i < 54; i++) // Assuming there are 54 cards
@@ -57,21 +60,24 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (gameManager.turn == true)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-
-            if (hit.collider != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("getCard"))
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+                if (hit.collider != null)
                 {
-                    StartCoroutine(MyGetCard());
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("getCard") && gameManager.startSetting == false)
+                    {
+                        StartCoroutine(MyGetCard());
+                    }
                 }
             }
         }
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        if (animTime >= 1.0f && lastAnimTime < 1.0f)
+        if (animTime >= 1.0f && lastAnimTime < 1.0f && !anim.GetCurrentAnimatorStateInfo(0).IsName("CardIdle"))
         {
             lastAnimTime = 1.0f;
             anim.SetBool("nextAnim", false);
@@ -90,9 +96,10 @@ public class CardManager : MonoBehaviour
 
     }
 
-    IEnumerator MyGetCard()
+    public IEnumerator MyGetCard()
     {
         anim.SetBool("nextAnim", true);
         yield return new WaitForSeconds(0.1f);
+        gameManager.turn = false;
     }
 }

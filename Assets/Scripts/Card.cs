@@ -12,12 +12,14 @@ public class Card : MonoBehaviour
     private float lastAnimTime = 0;
 
     CardManager cardManager;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -30,17 +32,30 @@ public class Card : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.name == "card"+decknum.ToString())
+                if (hit.collider.gameObject.name == "card"+decknum.ToString() && gameManager.startSetting == false && gameManager.turn == true)
                 {
-                    Debug.Log(cardManager.myCardDeck[decknum - 1].cardNumber);
-                    if (cardManager.showCardNum / 13 == cardManager.myCardDeck[decknum-1].cardNumber / 13 || cardManager.showCardNum % 13 == cardManager.myCardDeck[decknum - 1].cardNumber % 13)
+                    if (cardManager.myCardDeck[decknum-1].cardNumber == 52 && (cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3))
                     {
-                        anim.SetInteger("show", decknum);
-                        cardManager.cardCount--;
-                        cardManager.anim.SetInteger("getCard", cardManager.cardCount);
-                        cardManager.show = false;
-                        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                        cardManager.showCardNum = cardManager.myCardDeck[decknum - 1].cardNumber;
+                        show();
+                    }
+                    else if(cardManager.myCardDeck[decknum - 1].cardNumber == 53 && (cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2))
+                    {
+                        show();
+                    }
+                    else
+                    {
+                        if (cardManager.showCardNum == 52 && (cardManager.myCardDeck[decknum - 1].cardNumber/13==0 || cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 3))
+                        {
+                            show();
+                        }
+                        else if (cardManager.showCardNum == 53 && (cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 1 || cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 2))
+                        {
+                            show();
+                        }
+                        else if (cardManager.showCardNum / 13 == cardManager.myCardDeck[decknum - 1].cardNumber / 13 || cardManager.showCardNum % 13 == cardManager.myCardDeck[decknum - 1].cardNumber % 13)
+                        {
+                            show();
+                        }
                     }
                 }
             }
@@ -64,5 +79,16 @@ public class Card : MonoBehaviour
         {
             lastAnimTime = animTime;
         }
+    }
+
+    public void show()
+    {
+        anim.SetInteger("show", decknum);
+        cardManager.cardCount--;
+        cardManager.anim.SetInteger("getCard", cardManager.cardCount);
+        cardManager.show = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        cardManager.showCardNum = cardManager.myCardDeck[decknum - 1].cardNumber;
+        gameManager.turn = false;
     }
 }
