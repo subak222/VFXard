@@ -29,6 +29,7 @@ public class AiShow : MonoBehaviour
         if (animTime >= 1.0f && lastAnimTime < 1.0f && showanim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
             Debug.Log(aiManager.aiCardDeck[deckNum].cardNumber % 13);
+            Debug.Log(aiManager.aiCardDeck[deckNum].cardNumber % 13 == 10 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 11 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 12);
             if (aiManager.aiCardDeck[deckNum].cardNumber % 13 == 10 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 11 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 12)
             {
                 showanim.SetInteger("AiShow", 0);
@@ -41,6 +42,7 @@ public class AiShow : MonoBehaviour
                     aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
                 }
                 aiManager.aiCardCount--;
+                aiManager.showCardList.Clear();
                 aiManager.checkCard = true;
             }
             else if (aiManager.aiCardDeck[deckNum].cardNumber % 13 != 10 && aiManager.aiCardDeck[deckNum].cardNumber % 13 != 11 && aiManager.aiCardDeck[deckNum].cardNumber % 13 != 12)
@@ -55,6 +57,7 @@ public class AiShow : MonoBehaviour
                     aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
                 }
                 aiManager.aiCardCount--;
+                aiManager.showCardList.Clear();
                 Invoke("nextTurn", 1f);
             }
         }

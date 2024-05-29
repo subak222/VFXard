@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(turn);
         if (startSetting == true && (cardManager.cardCount < 8 && aiManager.aiCardCount < 8))
         {
             StartCoroutine(start());

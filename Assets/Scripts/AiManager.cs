@@ -106,16 +106,11 @@ public class AiManager : MonoBehaviour
                 int randomIndex = UnityEngine.Random.Range(0, showCardList.Count);
                 ShowCard randomShowCard = showCardList[randomIndex];
                 aishows[randomShowCard.deckNum].drowCard(randomShowCard.deckNum, randomShowCard.spriteNum);
-                showCardList.Clear();
             }
             else
             {
                 StartCoroutine(AiGetCard());
             }
-        }
-
-        if (gameManager.turn == true)
-        {
         }
     }
 
