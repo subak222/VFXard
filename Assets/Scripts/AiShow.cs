@@ -8,12 +8,15 @@ public class AiShow : MonoBehaviour
     GameManager gameManager;
     CardManager cardManager;
 
-    public Animator[] showanim;
+    Animator showanim;
+    public int aiDeckNum;
+    public int deckNum;
 
     private float lastAnimTime = 0f;
 
     void Start()
     {
+        showanim = GetComponent<Animator>();
         aiManager = GameObject.Find("AiManager").GetComponent<AiManager>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
@@ -22,18 +25,37 @@ public class AiShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float animTime = showanim[0].GetCurrentAnimatorStateInfo(0).normalizedTime;
-        if (animTime >= 1.0f && lastAnimTime < 1.0f)
+        float animTime = showanim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        if (animTime >= 1.0f && lastAnimTime < 1.0f && showanim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
+            showanim.SetInteger("AiShow", 0);
+            lastAnimTime = 1.0f;
+            Invoke("nextTurn", 1f);
+            aiManager.aiCardDeck[aiManager.aiCardCount - 1].mycard.SetActive(false);
+            cardManager.showCard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[deckNum].mycard.GetComponent<SpriteRenderer>().sprite;
+            for (int i = deckNum; i < 20; i++)
+            {
+                aiManager.aiCardDeck[i].cardNumber = aiManager.aiCardDeck[i + 1].cardNumber;
+                aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
+            }
+            aiManager.aiCardCount--;
         }
         else
         {
             lastAnimTime = animTime;
         }
+    }
 
-        if (gameManager.startSetting == false && gameManager.turn == false)
-        {
-            showanim[0].SetBool("AiShow", true);
-        }
+    public void drowCard(int deckNum, int spriteNum)
+    {
+        this.deckNum = deckNum;
+        showanim.SetInteger("AiShow", deckNum + 1);
+        cardManager.showCardNum = aiManager.aiCardDeck[deckNum].cardNumber;
+    }
+
+    public void nextTurn()
+    {
+        gameManager.turn = true;
     }
 }

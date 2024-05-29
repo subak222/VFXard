@@ -915,6 +915,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea95316629c8dd04084836e27aed2058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aishows:
+  - {fileID: 1089594202}
+  - {fileID: 1689999219}
+  - {fileID: 562230389}
+  - {fileID: 1211520525}
+  - {fileID: 1826162412}
+  - {fileID: 1516495849}
+  - {fileID: 619296396}
+  - {fileID: 1132263152}
+  - {fileID: 1566407207}
+  - {fileID: 781852105}
+  - {fileID: 1525129893}
+  - {fileID: 1350158544}
+  - {fileID: 1229409895}
+  - {fileID: 1487246729}
+  - {fileID: 682906634}
+  - {fileID: 723927107}
+  - {fileID: 1479093077}
+  - {fileID: 826811700}
+  - {fileID: 953641185}
+  - {fileID: 777762027}
   aiCardDeck:
   - cardNumber: 0
     mycard: {fileID: 1089594198}
@@ -958,8 +979,11 @@ MonoBehaviour:
     mycard: {fileID: 777762023}
   - cardNumber: 0
     mycard: {fileID: 1481208517}
+  showCardList: []
   anim: {fileID: 2049513306}
   aiCardCount: 1
+  showCount: 0
+  checkCard: 1
 --- !u!1 &343912406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1428,7 @@ GameObject:
   - component: {fileID: 562230386}
   - component: {fileID: 562230387}
   - component: {fileID: 562230388}
+  - component: {fileID: 562230389}
   m_Layer: 0
   m_Name: card3
   m_TagString: Untagged
@@ -1467,7 +1492,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1475,7 +1500,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &562230388
@@ -1499,6 +1524,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &562230389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562230385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 3
+  deckNum: 0
 --- !u!1 &578049654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1747,7 @@ GameObject:
   - component: {fileID: 619296393}
   - component: {fileID: 619296394}
   - component: {fileID: 619296395}
+  - component: {fileID: 619296396}
   m_Layer: 0
   m_Name: card7
   m_TagString: Untagged
@@ -1771,7 +1811,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1779,7 +1819,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &619296395
@@ -1803,6 +1843,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &619296396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619296392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 7
+  deckNum: 0
 --- !u!1 &682906630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1868,7 @@ GameObject:
   - component: {fileID: 682906631}
   - component: {fileID: 682906632}
   - component: {fileID: 682906633}
+  - component: {fileID: 682906634}
   m_Layer: 0
   m_Name: card15
   m_TagString: Untagged
@@ -1877,7 +1932,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1885,7 +1940,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &682906633
@@ -1909,6 +1964,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &682906634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682906630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 15
+  deckNum: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2083,7 @@ GameObject:
   - component: {fileID: 723927104}
   - component: {fileID: 723927105}
   - component: {fileID: 723927106}
+  - component: {fileID: 723927107}
   m_Layer: 0
   m_Name: card16
   m_TagString: Untagged
@@ -2077,7 +2147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2085,7 +2155,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &723927106
@@ -2109,6 +2179,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &723927107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723927103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 16
+  deckNum: 0
 --- !u!1 &751184629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,6 +2704,7 @@ GameObject:
   - component: {fileID: 777762024}
   - component: {fileID: 777762025}
   - component: {fileID: 777762026}
+  - component: {fileID: 777762027}
   m_Layer: 0
   m_Name: card20
   m_TagString: Untagged
@@ -2683,7 +2768,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2691,7 +2776,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &777762026
@@ -2715,6 +2800,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &777762027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777762023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 20
+  deckNum: 0
 --- !u!1 &781852101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2825,7 @@ GameObject:
   - component: {fileID: 781852102}
   - component: {fileID: 781852103}
   - component: {fileID: 781852104}
+  - component: {fileID: 781852105}
   m_Layer: 0
   m_Name: card10
   m_TagString: Untagged
@@ -2789,7 +2889,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2797,7 +2897,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &781852104
@@ -2821,6 +2921,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &781852105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781852101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 10
+  deckNum: 0
 --- !u!1 &783089928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,6 +3074,7 @@ GameObject:
   - component: {fileID: 826811697}
   - component: {fileID: 826811698}
   - component: {fileID: 826811699}
+  - component: {fileID: 826811700}
   m_Layer: 0
   m_Name: card18
   m_TagString: Untagged
@@ -3023,7 +3138,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3031,7 +3146,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &826811699
@@ -3055,6 +3170,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &826811700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826811696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 18
+  deckNum: 0
 --- !u!1 &841226176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3361,7 @@ GameObject:
   - component: {fileID: 953641182}
   - component: {fileID: 953641183}
   - component: {fileID: 953641184}
+  - component: {fileID: 953641185}
   m_Layer: 0
   m_Name: card19
   m_TagString: Untagged
@@ -3295,7 +3425,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3303,7 +3433,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &953641184
@@ -3327,6 +3457,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &953641185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953641181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 19
+  deckNum: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3884,7 @@ GameObject:
   - component: {fileID: 1089594199}
   - component: {fileID: 1089594200}
   - component: {fileID: 1089594201}
+  - component: {fileID: 1089594202}
   m_Layer: 0
   m_Name: card1
   m_TagString: Untagged
@@ -3803,7 +3948,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3811,7 +3956,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1089594201
@@ -3835,6 +3980,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1089594202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089594198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 1
+  deckNum: 0
 --- !u!1 &1132263148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +4005,7 @@ GameObject:
   - component: {fileID: 1132263149}
   - component: {fileID: 1132263150}
   - component: {fileID: 1132263151}
+  - component: {fileID: 1132263152}
   m_Layer: 0
   m_Name: card8
   m_TagString: Untagged
@@ -3909,7 +4069,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3917,7 +4077,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1132263151
@@ -3941,6 +4101,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1132263152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132263148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 8
+  deckNum: 0
 --- !u!1 &1211520521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3952,6 +4126,7 @@ GameObject:
   - component: {fileID: 1211520522}
   - component: {fileID: 1211520523}
   - component: {fileID: 1211520524}
+  - component: {fileID: 1211520525}
   m_Layer: 0
   m_Name: card4
   m_TagString: Untagged
@@ -4015,7 +4190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4023,7 +4198,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1211520524
@@ -4047,6 +4222,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1211520525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211520521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 4
+  deckNum: 0
 --- !u!1 &1229409891
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4247,7 @@ GameObject:
   - component: {fileID: 1229409892}
   - component: {fileID: 1229409893}
   - component: {fileID: 1229409894}
+  - component: {fileID: 1229409895}
   m_Layer: 0
   m_Name: card13
   m_TagString: Untagged
@@ -4121,7 +4311,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4129,7 +4319,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1229409894
@@ -4153,6 +4343,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1229409895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229409891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 13
+  deckNum: 0
 --- !u!1 &1261876175
 GameObject:
   m_ObjectHideFlags: 0
@@ -4562,6 +4766,7 @@ GameObject:
   - component: {fileID: 1350158541}
   - component: {fileID: 1350158542}
   - component: {fileID: 1350158543}
+  - component: {fileID: 1350158544}
   m_Layer: 0
   m_Name: card12
   m_TagString: Untagged
@@ -4625,7 +4830,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4633,7 +4838,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1350158543
@@ -4657,6 +4862,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1350158544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350158540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 12
+  deckNum: 0
 --- !u!1 &1359647131
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,6 +5169,7 @@ GameObject:
   - component: {fileID: 1479093074}
   - component: {fileID: 1479093075}
   - component: {fileID: 1479093076}
+  - component: {fileID: 1479093077}
   m_Layer: 0
   m_Name: card17
   m_TagString: Untagged
@@ -5013,7 +5233,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5021,7 +5241,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1479093076
@@ -5045,6 +5265,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1479093077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479093073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 17
+  deckNum: 0
 --- !u!1 &1481208517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,6 +5374,7 @@ GameObject:
   - component: {fileID: 1487246726}
   - component: {fileID: 1487246727}
   - component: {fileID: 1487246728}
+  - component: {fileID: 1487246729}
   m_Layer: 0
   m_Name: card14
   m_TagString: Untagged
@@ -5203,7 +5438,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5211,7 +5446,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1487246728
@@ -5235,6 +5470,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1487246729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487246725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 14
+  deckNum: 0
 --- !u!1 &1516495845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5495,7 @@ GameObject:
   - component: {fileID: 1516495846}
   - component: {fileID: 1516495847}
   - component: {fileID: 1516495848}
+  - component: {fileID: 1516495849}
   m_Layer: 0
   m_Name: card6
   m_TagString: Untagged
@@ -5309,7 +5559,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5317,7 +5567,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1516495848
@@ -5341,6 +5591,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1516495849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516495845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 6
+  deckNum: 0
 --- !u!1 &1525129889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,6 +5616,7 @@ GameObject:
   - component: {fileID: 1525129890}
   - component: {fileID: 1525129891}
   - component: {fileID: 1525129892}
+  - component: {fileID: 1525129893}
   m_Layer: 0
   m_Name: card11
   m_TagString: Untagged
@@ -5415,7 +5680,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5423,7 +5688,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1525129892
@@ -5447,6 +5712,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1525129893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525129889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 11
+  deckNum: 0
 --- !u!1 &1566407203
 GameObject:
   m_ObjectHideFlags: 0
@@ -5458,6 +5737,7 @@ GameObject:
   - component: {fileID: 1566407204}
   - component: {fileID: 1566407205}
   - component: {fileID: 1566407206}
+  - component: {fileID: 1566407207}
   m_Layer: 0
   m_Name: card9
   m_TagString: Untagged
@@ -5521,7 +5801,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5529,7 +5809,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1566407206
@@ -5553,6 +5833,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1566407207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566407203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 9
+  deckNum: 0
 --- !u!1 &1582767454
 GameObject:
   m_ObjectHideFlags: 0
@@ -5833,6 +6127,7 @@ GameObject:
   - component: {fileID: 1689999216}
   - component: {fileID: 1689999217}
   - component: {fileID: 1689999218}
+  - component: {fileID: 1689999219}
   m_Layer: 0
   m_Name: card2
   m_TagString: Untagged
@@ -5896,7 +6191,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5904,7 +6199,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1689999218
@@ -5928,6 +6223,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1689999219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689999215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 2
+  deckNum: 0
 --- !u!1 &1720496903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,6 +6580,7 @@ GameObject:
   - component: {fileID: 1826162409}
   - component: {fileID: 1826162410}
   - component: {fileID: 1826162411}
+  - component: {fileID: 1826162412}
   m_Layer: 0
   m_Name: card5
   m_TagString: Untagged
@@ -6334,7 +6644,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 893183732, guid: cd21a99a63b4a3a4f951aff80ef429e4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6342,7 +6652,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 2.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1826162411
@@ -6366,6 +6676,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1826162412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826162408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648f350b47750a647adeb4048983cef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDeckNum: 5
+  deckNum: 0
 --- !u!1 &1852090751
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class CardManager : MonoBehaviour
     }
 
     GameManager gameManager;
+    AiManager aiManager;
 
     public GameObject showCard;
 
@@ -32,6 +33,7 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        aiManager = GameObject.Find("AiManager").GetComponent<AiManager>();
 
         anim.SetInteger("getCard", cardCount);
         anim.SetBool("nextAnim", false);
@@ -88,6 +90,7 @@ public class CardManager : MonoBehaviour
             myCardDeck[cardCount - 1].mycard.SetActive(true);
             cardCount++;
             anim.SetInteger("getCard", cardCount);
+            Invoke("nextTurn", 1f);
         }
         else
         {
@@ -100,6 +103,11 @@ public class CardManager : MonoBehaviour
     {
         anim.SetBool("nextAnim", true);
         yield return new WaitForSeconds(0.1f);
+    }
+
+    public void nextTurn()
+    {
         gameManager.turn = false;
+        aiManager.checkCard = true;
     }
 }

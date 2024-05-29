@@ -13,6 +13,7 @@ public class Card : MonoBehaviour
 
     CardManager cardManager;
     GameManager gameManager;
+    AiManager aiManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Card : MonoBehaviour
         anim = GetComponent<Animator>();
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        aiManager = GameObject.Find("AiManager").GetComponent<AiManager>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class Card : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.name == "card"+decknum.ToString() && gameManager.startSetting == false && gameManager.turn == true)
+                if (hit.collider.gameObject.name == "card"+decknum.ToString() && gameManager.startSetting == false && gameManager.turn ==  true)
                 {
                     if (cardManager.myCardDeck[decknum-1].cardNumber == 52 && (cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3))
                     {
@@ -63,6 +65,7 @@ public class Card : MonoBehaviour
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (animTime >= 1.0f && lastAnimTime < 1.0f && anim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
+            Invoke("nextTurn", 1f);
             cardManager.showCard.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             lastAnimTime = 1.0f;
@@ -89,6 +92,11 @@ public class Card : MonoBehaviour
         cardManager.show = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         cardManager.showCardNum = cardManager.myCardDeck[decknum - 1].cardNumber;
+    }
+
+    public void nextTurn()
+    {
         gameManager.turn = false;
+        aiManager.checkCard = true;
     }
 }
