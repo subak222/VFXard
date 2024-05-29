@@ -65,12 +65,15 @@ public class Card : MonoBehaviour
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (animTime >= 1.0f && lastAnimTime < 1.0f && anim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
-            Invoke("nextTurn", 1f);
             cardManager.showCard.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             lastAnimTime = 1.0f;
             anim.SetInteger("show", 0);
             cardManager.myCardDeck[cardManager.cardCount-1].mycard.SetActive(false);
+            if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 10 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 11 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 12)
+            {
+                Invoke("nextTurn", 1f);
+            }
             for (int i = decknum-1; i < 20; i++)
             {
                 cardManager.myCardDeck[i].cardNumber = cardManager.myCardDeck[i + 1].cardNumber;

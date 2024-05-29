@@ -26,20 +26,37 @@ public class AiShow : MonoBehaviour
     void Update()
     {
         float animTime = showanim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
         if (animTime >= 1.0f && lastAnimTime < 1.0f && showanim.GetCurrentAnimatorStateInfo(0).IsName("PutCard"))
         {
-            showanim.SetInteger("AiShow", 0);
-            lastAnimTime = 1.0f;
-            Invoke("nextTurn", 1f);
-            aiManager.aiCardDeck[aiManager.aiCardCount - 1].mycard.SetActive(false);
-            cardManager.showCard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[deckNum].mycard.GetComponent<SpriteRenderer>().sprite;
-            for (int i = deckNum; i < 20; i++)
+            Debug.Log(aiManager.aiCardDeck[deckNum].cardNumber % 13);
+            if (aiManager.aiCardDeck[deckNum].cardNumber % 13 == 10 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 11 || aiManager.aiCardDeck[deckNum].cardNumber % 13 == 12)
             {
-                aiManager.aiCardDeck[i].cardNumber = aiManager.aiCardDeck[i + 1].cardNumber;
-                aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
+                showanim.SetInteger("AiShow", 0);
+                lastAnimTime = 1.0f;
+                aiManager.aiCardDeck[aiManager.aiCardCount - 1].mycard.SetActive(false);
+                cardManager.showCard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[deckNum].mycard.GetComponent<SpriteRenderer>().sprite;
+                for (int i = deckNum; i < 20; i++)
+                {
+                    aiManager.aiCardDeck[i].cardNumber = aiManager.aiCardDeck[i + 1].cardNumber;
+                    aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
+                }
+                aiManager.aiCardCount--;
+                aiManager.checkCard = true;
             }
-            aiManager.aiCardCount--;
+            else if (aiManager.aiCardDeck[deckNum].cardNumber % 13 != 10 && aiManager.aiCardDeck[deckNum].cardNumber % 13 != 11 && aiManager.aiCardDeck[deckNum].cardNumber % 13 != 12)
+            {
+                showanim.SetInteger("AiShow", 0);
+                lastAnimTime = 1.0f;
+                aiManager.aiCardDeck[aiManager.aiCardCount - 1].mycard.SetActive(false);
+                cardManager.showCard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[deckNum].mycard.GetComponent<SpriteRenderer>().sprite;
+                for (int i = deckNum; i < 20; i++)
+                {
+                    aiManager.aiCardDeck[i].cardNumber = aiManager.aiCardDeck[i + 1].cardNumber;
+                    aiManager.aiCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = aiManager.aiCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
+                }
+                aiManager.aiCardCount--;
+                Invoke("nextTurn", 1f);
+            }
         }
         else
         {

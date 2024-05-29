@@ -51,7 +51,6 @@ public class AiManager : MonoBehaviour
     {
         anim.SetInteger("AiGetCard", aiCardCount);
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        Debug.Log(aiCardCount);
         if (animTime >= 1.0f && lastAnimTime < 1.0f && !anim.GetCurrentAnimatorStateInfo(0).IsName("AiCardIdle"))
         {
             lastAnimTime = 1.0f;
@@ -63,7 +62,7 @@ public class AiManager : MonoBehaviour
             aiCardDeck[aiCardCount - 1].mycard.SetActive(true);
             aiCardCount++;
             anim.SetInteger("AiGetCard", aiCardCount);
-            Invoke("nextTurn", 2f);
+            Invoke("nextTurn", 1f);
         }
         else
         {
@@ -72,6 +71,7 @@ public class AiManager : MonoBehaviour
 
         if (gameManager.turn == false && gameManager.startSetting == false && checkCard == true)
         {
+            checkCard = false;
             for (int i = 0; i < aiCardDeck.Length; i++)
             {
                 if (aiCardDeck[i].cardNumber != 0)
@@ -106,18 +106,16 @@ public class AiManager : MonoBehaviour
                 int randomIndex = UnityEngine.Random.Range(0, showCardList.Count);
                 ShowCard randomShowCard = showCardList[randomIndex];
                 aishows[randomShowCard.deckNum].drowCard(randomShowCard.deckNum, randomShowCard.spriteNum);
+                showCardList.Clear();
             }
             else
             {
                 StartCoroutine(AiGetCard());
             }
-            checkCard = false;
-            Invoke("nextTurn", 1f);
         }
 
         if (gameManager.turn == true)
         {
-            showCardList.Clear();
         }
     }
 

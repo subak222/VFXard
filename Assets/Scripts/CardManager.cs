@@ -62,6 +62,7 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
+        anim.SetInteger("getCard", cardCount);
         if (gameManager.turn == true)
         {
             if (Input.GetMouseButtonDown(0))
