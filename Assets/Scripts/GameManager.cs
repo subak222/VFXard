@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
 
     public bool turn;
     public bool startSetting = true;
+    public bool attack = false;
+    public int attackCount = 0;
+    public bool defence = false;
+    public bool attackGetCard = false;
+    public bool changeShape;
 
     [SerializeField]
     private GameObject arrow;
@@ -33,7 +38,6 @@ public class GameManager : MonoBehaviour
             startSetting = false;
             arrow.SetActive(true);
         }
-
         if (turn == true)
         {
             arrow.transform.rotation = Quaternion.Euler(0, 0, 180);

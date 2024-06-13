@@ -14,6 +14,7 @@ public class CardManager : MonoBehaviour
 
     GameManager gameManager;
     AiManager aiManager;
+    Card card;
 
     public GameObject showCard;
 
@@ -72,13 +73,28 @@ public class CardManager : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("getCard") && gameManager.startSetting == false)
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("getCard"))
                     {
-                        StartCoroutine(MyGetCard());
+                        if (gameManager.startSetting == false && gameManager.attack == false)
+                        {
+                            StartCoroutine(MyGetCard());
+                        }
+                        else
+                        {
+                            if (gameManager.attackGetCard == true)
+                            {
+                                StartCoroutine(AttackGetCard());
+                            }
+                            else
+                            {
+                                StartCoroutine(AttackGetCard());
+                            }
+                        }
                     }
                 }
             }
         }
+
         float animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (animTime >= 1.0f && lastAnimTime < 1.0f && !anim.GetCurrentAnimatorStateInfo(0).IsName("CardIdle"))
         {
@@ -91,23 +107,48 @@ public class CardManager : MonoBehaviour
             myCardDeck[cardCount - 1].mycard.SetActive(true);
             cardCount++;
             anim.SetInteger("getCard", cardCount);
-            Invoke("nextTurn", 1f);
+            if (gameManager.attackCount != 0 && gameManager.attack == true)
+            {
+                gameManager.attackCount--;
+                if (gameManager.attackCount == 0)
+                {
+                    gameManager.attack = false;
+                    gameManager.attackGetCard = false;
+                    Invoke("nextTurn", 1f);
+                }
+            }
+            if (gameManager.attack == false)
+            {
+                Invoke("nextTurn", 1f);
+            }
         }
         else
         {
             lastAnimTime = animTime;
         }
+    }
 
+    public IEnumerator AttackGetCard()
+    {
+        GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = false;
+        while (cardCount != cardCount + gameManager.attackCount)
+        {
+            anim.SetBool("nextAnim", true);
+            yield return new WaitForSeconds(1f);
+        }
+        gameManager.attackGetCard = false;
     }
 
     public IEnumerator MyGetCard()
     {
+        GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = false;
         anim.SetBool("nextAnim", true);
         yield return new WaitForSeconds(0.1f);
     }
 
     public void nextTurn()
     {
+        GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
         gameManager.turn = false;
         aiManager.checkCard = true;
     }
