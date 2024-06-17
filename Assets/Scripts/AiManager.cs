@@ -27,6 +27,7 @@ public class AiManager : MonoBehaviour
 
     CardManager cardManager;
     GameManager gameManager;
+
     public AiShow[] aishows;
 
     public Card[] aiCardDeck;
@@ -52,113 +53,145 @@ public class AiManager : MonoBehaviour
     {
         anim.SetInteger("AiGetCard", aiCardCount);
 
-        if (gameManager.turn == false && gameManager.startSetting == false && checkCard == true)
+        if (gameManager.turn == false && gameManager.startSetting == false && gameManager.attack == true & gameManager.defence == false)
         {
             checkCard = false;
-            if (gameManager.attack == false)
+            for (int i = 0; i < aiCardCount; i++)
             {
-                for (int i = 0; i < aiCardDeck.Length; i++)
+                if (cardManager.showCardNum == 52)
                 {
-                    if (aiCardDeck[i].cardNumber != 0)
+                    if (aiCardDeck[i].cardNumber == 53)
                     {
-                        if (aiCardDeck[i].cardNumber == 52 && (cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3))
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((aiCardDeck[i].cardNumber / 13 == 0 || aiCardDeck[i].cardNumber / 13 == 3) && (aiCardDeck[i].cardNumber % 13 == 0 || aiCardDeck[i].cardNumber % 13 == 1))
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else
+                    {
+                        gameManager.attackGetCard = true;
+                    }
+                }
+                else if (cardManager.showCardNum == 53)
+                {
+                    if (aiCardDeck[i].cardNumber == 52)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((aiCardDeck[i].cardNumber / 13 == 1 || aiCardDeck[i].cardNumber / 13 == 2) && (aiCardDeck[i].cardNumber % 13 == 0 || aiCardDeck[i].cardNumber % 13 == 1))
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else
+                    {
+                        gameManager.attackGetCard = true;
+                    }
+                }
+                else if (cardManager.showCardNum % 13 == 0)
+                {
+                    if ((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && aiCardDeck[i].cardNumber == 52)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && aiCardDeck[i].cardNumber == 53)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13) && aiCardDeck[i].cardNumber % 13 == 1)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if (aiCardDeck[i].cardNumber != 52 && aiCardDeck[i].cardNumber % 13 == 0)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13 && aiCardDeck[i].cardNumber % 13 == 2)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else
+                    {
+                        gameManager.attackGetCard = true;
+                    }
+                }
+                else if (cardManager.showCardNum % 13 == 1)
+                {
+                    if ((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && aiCardDeck[i].cardNumber == 52)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && aiCardDeck[i].cardNumber == 53)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if ((cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13) && aiCardDeck[i].cardNumber % 13 == 0)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if (aiCardDeck[i].cardNumber != 53 && aiCardDeck[i].cardNumber % 13 == 1)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13 && aiCardDeck[i].cardNumber % 13 == 2)
+                    {
+                        showCardList.Add(new AiManager.ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else
+                    {
+                        gameManager.attackGetCard = true;
+                    }
+                }
+            }
+            if (showCardList.Count != 0 && gameManager.attackGetCard == false)
+            {
+                DrowRandom();
+            }
+            if (gameManager.attackGetCard == true)
+            {
+                StartCoroutine(AiAttackGetCard());
+            }
+        }
+
+        if (gameManager.turn == false && gameManager.startSetting == false && checkCard == true && gameManager.attack == false)
+        {
+            checkCard = false;
+            for (int i = 0; i < aiCardDeck.Length; i++)
+            {
+                if (aiCardDeck[i].cardNumber != 0)
+                {
+                    if (aiCardDeck[i].cardNumber == 52 && (cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3))
+                    {
+                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else if (aiCardDeck[i].cardNumber == 53 && (cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2))
+                    {
+                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
+                    }
+                    else
+                    {
+                        if (cardManager.showCardNum == 52 && (aiCardDeck[i].cardNumber / 13 == 0 || aiCardDeck[i].cardNumber / 13 == 3))
                         {
                             showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
                         }
-                        else if (aiCardDeck[i].cardNumber == 53 && (cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2))
+                        else if (cardManager.showCardNum == 53 && (aiCardDeck[i].cardNumber / 13 == 1 || aiCardDeck[i].cardNumber / 13 == 2))
                         {
                             showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
                         }
-                        else
+                        else if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13 || cardManager.showCardNum % 13 == aiCardDeck[i].cardNumber % 13)
                         {
-                            if (cardManager.showCardNum == 52 && (aiCardDeck[i].cardNumber / 13 == 0 || aiCardDeck[i].cardNumber / 13 == 3))
-                            {
-                                showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                            }
-                            else if (cardManager.showCardNum == 53 && (aiCardDeck[i].cardNumber / 13 == 1 || aiCardDeck[i].cardNumber / 13 == 2))
-                            {
-                                showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                            }
-                            else if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13 || cardManager.showCardNum % 13 == aiCardDeck[i].cardNumber % 13)
-                            {
-                                showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                            }
+                            showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
                         }
                     }
                 }
-                if (showCardList.Count > 0)
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, showCardList.Count);
-                    ShowCard randomShowCard = showCardList[randomIndex];
-                    aishows[randomShowCard.deckNum].drowCard(randomShowCard.deckNum, randomShowCard.spriteNum);
-                }
-                else
-                {
-                    if (gameManager.attackGetCard == true) StartCoroutine(AiAttackGetCard());
-                    else StartCoroutine(AiGetCard());
-                }
+            }
+            if (showCardList.Count != 0)
+            {
+                DrowRandom();
             }
             else
             {
-                Debug.Log("공격 받았다");
-                for (int i = 0; i < aiCardDeck.Length; i++)
-                {
-                    if (cardManager.showCardNum == 52 && (aiCardDeck[i].cardNumber == 53 || (aiCardDeck[i].cardNumber / 13 == 0 || aiCardDeck[i].cardNumber / 13 == 3) && (aiCardDeck[i].cardNumber % 13 == 0 || aiCardDeck[i].cardNumber % 13 == 1)))
-                    {
-                        // 낸 카드가 흑조커 일 때, 덱 중 컬러조커 or 스페이드나 클로버 중 a or 2 있을 떄
-                        Debug.Log("111");
-                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                    }
-                    else if (cardManager.showCardNum == 53 && (aiCardDeck[i].cardNumber == 52 || (aiCardDeck[i].cardNumber / 13 == 1 || aiCardDeck[i].cardNumber / 13 == 2) && (aiCardDeck[i].cardNumber % 13 == 0 || aiCardDeck[i].cardNumber % 13 == 1)))
-                    {
-                        // 낸 카드가 컬러조커 일 때, 댁 중 흑조커 or 다이아나 하트 중 a or 2 있을 떄
-                        Debug.Log("222");
-                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                    }
-                    else if (cardManager.showCardNum % 13 == 0 && ((aiCardDeck[i].cardNumber % 13 == 0 && aiCardDeck[i].cardNumber != 52) || (((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && aiCardDeck[i].cardNumber == 52) || ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && aiCardDeck[i].cardNumber == 53))))
-                    {
-                        // 낸 카드가 a 일 때, 덱 중 a가 있거나 같은 색 조커가 있을 떄
-                        Debug.Log("333");
-                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                    }
-                    else if (cardManager.showCardNum % 13 == 1 && ((aiCardDeck[i].cardNumber % 13 == 1 && aiCardDeck[i].cardNumber != 53) || (((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && aiCardDeck[i].cardNumber == 52) || ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && aiCardDeck[i].cardNumber == 53))))
-                    {
-                        // 낸 카드가 2 일 때, 덱 중 2가 있거나 같은 색 조커가 있을 때
-                        Debug.Log("444");
-                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                    }
-                    else if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber / 13)
-                    {
-                        if (cardManager.showCardNum % 13 == 0 && aiCardDeck[i].cardNumber % 13 == 1)
-                        {
-                            // 같은 모양일 때,  0일 때 1이 있는 경우
-                            Debug.Log("555");
-                            showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                        }
-                        else if (cardManager.showCardNum % 13 == 1 && aiCardDeck[i].cardNumber % 13 == 0)
-                        {
-                            // 같은 모양일 때, 1일 때 0이 있는 경우
-                            Debug.Log("666");
-                            showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                        }
-                    }
-                    if (cardManager.showCardNum / 13 == aiCardDeck[i].cardNumber && aiCardDeck[i].cardNumber % 13 == 2)
-                    {
-                        Debug.Log("777");
-                        showCardList.Add(new ShowCard(i, aiCardDeck[i].cardNumber));
-                    }
-                }
-                if (showCardList.Count > 0)
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, showCardList.Count);
-                    ShowCard randomShowCard = showCardList[randomIndex];
-                    aishows[randomShowCard.deckNum].drowCard(randomShowCard.deckNum, randomShowCard.spriteNum);
-                }
-                else
-                {
-                    if (gameManager.attackGetCard == true) StartCoroutine(AiAttackGetCard());
-                    else StartCoroutine(AiGetCard());
-                }
+                StartCoroutine(AiGetCard());
             }
         }
 
@@ -174,7 +207,7 @@ public class AiManager : MonoBehaviour
             aiCardDeck[aiCardCount - 1].mycard.SetActive(true);
             aiCardCount++;
             anim.SetInteger("AiGetCard", aiCardCount);
-            if (gameManager.attackCount != 0 && gameManager.attack == true)
+            if (gameManager.attackCount != 0 && gameManager.attack == true && gameManager.defence == true)
             {
                 gameManager.attackCount--;
                 if (gameManager.attackCount == 0)
@@ -202,7 +235,6 @@ public class AiManager : MonoBehaviour
             anim.SetBool("AiNextAnim", true);
             yield return new WaitForSeconds(1f);
         }
-        gameManager.attackGetCard = false;
     }
 
     public IEnumerator AiGetCard()
@@ -214,5 +246,56 @@ public class AiManager : MonoBehaviour
     public void nextTurn()
     {
         gameManager.turn = true;
+        gameManager.defence = false;
+    }
+
+    public void DrowRandom()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, showCardList.Count);
+        ShowCard randomShowCard = showCardList[randomIndex];
+
+        Debug.Log("덱넘 " + randomShowCard.deckNum);
+        Debug.Log("스프라이트넘 " + randomShowCard.spriteNum);
+
+        if (randomShowCard.spriteNum == 52)
+        {
+            gameManager.attackCount += 5;
+            gameManager.defence = true;
+            gameManager.attack = true;
+        }
+        else if (randomShowCard.spriteNum == 53)
+        {
+            gameManager.attackCount += 7;
+            gameManager.defence = true;
+            gameManager.attack = true;
+        }
+        else if (randomShowCard.spriteNum % 13 == 0)
+        {
+            if (randomShowCard.spriteNum / 13 == 3)
+            {
+                gameManager.attackCount += 5;
+                gameManager.defence = true;
+                gameManager.attack = true;
+            }
+            else
+            {
+                gameManager.attackCount += 3;
+                gameManager.defence = true;
+                gameManager.attack = true;
+            }
+        }
+        else if (randomShowCard.spriteNum % 13 == 1)
+        {
+            gameManager.attackCount += 2;
+            gameManager.defence = true;
+            gameManager.attack = true;
+        }
+        else if (randomShowCard.spriteNum % 13 == 2)
+        {
+            gameManager.attackCount = 0;
+            gameManager.attack = false;
+        }
+
+        aishows[randomShowCard.deckNum].drowCard(randomShowCard.deckNum, randomShowCard.spriteNum);
     }
 }

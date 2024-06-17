@@ -151,5 +151,6 @@ public class CardManager : MonoBehaviour
         GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
         gameManager.turn = false;
         aiManager.checkCard = true;
+        gameManager.aiShow = true;
     }
 }

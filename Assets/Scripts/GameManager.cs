@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool defence = false;
     public bool attackGetCard = false;
     public bool changeShape;
+    public bool aiShow;
 
     [SerializeField]
     private GameObject arrow;

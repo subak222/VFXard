@@ -30,6 +30,15 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.turn == true)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
         if (gameManager.attack == true && gameManager.turn == true && gameManager.defence == false)
         {
             for (int i = 0; i < cardManager.cardCount; i++)
@@ -172,14 +181,14 @@ public class Card : MonoBehaviour
             {
                 Invoke("nextTurn", 1f);
             }
+            else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 10 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 11 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 12)
+            {
+                GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
+            }
             for (int i = decknum-1; i < 20; i++)
             {
                 cardManager.myCardDeck[i].cardNumber = cardManager.myCardDeck[i + 1].cardNumber;
                 cardManager.myCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = cardManager.myCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
-            }
-            if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 10 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 11 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 12)
-            {
-                GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
             }
             cardManager.show = true;
             gameManager.defence = false;

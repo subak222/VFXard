@@ -1067,6 +1067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261789434}
   - component: {fileID: 261789435}
+  - component: {fileID: 261789436}
   m_Layer: 0
   m_Name: AiManager
   m_TagString: Untagged
@@ -1171,6 +1172,18 @@ MonoBehaviour:
   showCount: 0
   checkCard: 1
   AiGetCards: 0
+--- !u!114 &261789436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261789433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080f451cb98966d47a7d4e802580e3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343912406
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,6 +5360,7 @@ MonoBehaviour:
   defence: 0
   attackGetCard: 0
   changeShape: 0
+  aiShow: 0
   arrow: {fileID: 1979275882}
 --- !u!1 &1446594359
 GameObject:
