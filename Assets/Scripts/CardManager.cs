@@ -66,6 +66,7 @@ public class CardManager : MonoBehaviour
         anim.SetInteger("getCard", cardCount);
         if (gameManager.turn == true)
         {
+            GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

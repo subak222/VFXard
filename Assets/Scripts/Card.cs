@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Xml.Serialization;
 
 
 public class Card : MonoBehaviour
@@ -16,6 +17,7 @@ public class Card : MonoBehaviour
     GameManager gameManager;
     AiManager aiManager;
     ChangeShape changeShape;
+    OneCard oneCard;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class Card : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         aiManager = GameObject.Find("AiManager").GetComponent<AiManager>();
         changeShape = GameObject.Find("ChangeShape").GetComponent<ChangeShape>();
+        oneCard = GameObject.Find("GameManager").GetComponent<OneCard>();
     }
 
     // Update is called once per frame
@@ -87,47 +90,95 @@ public class Card : MonoBehaviour
             {
                 if (gameManager.attack == true && gameManager.turn == true && hit.collider.gameObject.name == "card" + decknum.ToString() && gameManager.startSetting == false)
                 {
-                    if (cardManager.showCardNum == 52 && (cardManager.myCardDeck[decknum - 1].cardNumber == 53 || (cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 0 || cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 3) && (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 0 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)))
+                    int cardNumber = cardManager.myCardDeck[decknum - 1].cardNumber;
+                    if (cardManager.showCardNum == 52)
                     {
-                        show();
-                        attackCount();
-                    }
-                    else if (cardManager.showCardNum == 53 && (cardManager.myCardDeck[decknum - 1].cardNumber == 52 || (cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 1 || cardManager.myCardDeck[decknum - 1].cardNumber / 13 == 2) && (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 0 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)))
-                    {
-                        show();
-                        attackCount();
-                    }
-                    else if (cardManager.showCardNum % 13 == 0 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 0)
-                    {
-                        show();
-                        attackCount();
-                    }
-                    else if (cardManager.showCardNum % 13 == 1 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)
-                    {
-                        show();
-                        attackCount();
-                    }
-                    else if (cardManager.showCardNum / 13 == cardManager.myCardDeck[decknum - 1].cardNumber / 13)
-                    {
-                        if (cardManager.showCardNum % 13 == 0 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)
+                        if (cardNumber == 53)
                         {
                             show();
                             attackCount();
                         }
-                        else if (cardManager.showCardNum % 13 == 1 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)
+                        else if ((cardNumber / 13 == 0 || cardNumber / 13 == 3) && (cardNumber % 13 == 0 || cardNumber % 13 == 1))
                         {
                             show();
                             attackCount();
                         }
-                        else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 2)
+                    }
+                    else if (cardManager.showCardNum == 53)
+                    {
+                        if (cardNumber == 52)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardNumber / 13 == 1 || cardNumber / 13 == 2) && (cardNumber % 13 == 0 || cardNumber % 13 == 1))
+                        {
+                            show();
+                            attackCount();
+                        }
+                    }
+                    else if (cardManager.showCardNum % 13 == 0)
+                    {
+                        if ((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && cardNumber == 52)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && cardNumber == 53)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if (cardNumber % 13 == 0)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == cardNumber / 13) && cardNumber % 13 == 1)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == cardNumber / 13) && cardNumber % 13 == 2)
                         {
                             show();
                             gameManager.attack = false;
-                            gameManager.attackCount = 0; 
+                            gameManager.attackCount = 0;
+                            gameManager.attackGetCard = false;
+                        }
+                    }
+                    else if (cardManager.showCardNum % 13 == 1)
+                    {
+                        if ((cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3) && cardNumber == 52)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == 1 || cardManager.showCardNum / 13 == 2) && cardNumber == 53)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if (cardNumber % 13 == 1)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == cardNumber / 13) && cardNumber % 13 == 0)
+                        {
+                            show();
+                            attackCount();
+                        }
+                        else if ((cardManager.showCardNum / 13 == cardNumber / 13) && cardNumber % 13 == 2)
+                        {
+                            show();
+                            gameManager.attack = false;
+                            gameManager.attackCount = 0;
                             gameManager.attackGetCard = false;
                         }
                     }
                 }
+
                 if (hit.collider.gameObject.name == "card" + decknum.ToString() && gameManager.startSetting == false && gameManager.turn == true && gameManager.attack == false)
                 {
                     if (cardManager.myCardDeck[decknum - 1].cardNumber == 52 && (cardManager.showCardNum / 13 == 0 || cardManager.showCardNum / 13 == 3))
@@ -179,7 +230,34 @@ public class Card : MonoBehaviour
             }
             else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 10 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 11 && cardManager.myCardDeck[decknum - 1].cardNumber % 13 != 12)
             {
-                Invoke("nextTurn", 1f);
+                if (cardManager.myCardDeck[decknum - 1].cardNumber == 53)
+                {
+                    gameManager.transaction.SetActive(true);
+                    gameManager.tranAim.SetBool("isColorJoker", true);
+                    Invoke("playMeteor", 2);
+                }
+                else if (cardManager.myCardDeck[decknum - 1].cardNumber == 52)
+                {
+                    gameManager.transaction.SetActive(true);
+                    gameManager.tranAim.SetBool("isJoker", true);
+                    Invoke("playBlizzard", 2);
+                }
+                else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 0)
+                {                                                                                                                                                                                         
+                    gameManager.transaction.SetActive(true);
+                    gameManager.tranAim.SetInteger("shape", cardManager.myCardDeck[decknum - 1].cardNumber / 13);
+                    Invoke("playBeam", 1.2f);
+                }
+                else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 1)
+                {
+                    gameManager.transaction.SetActive(true);
+                    gameManager.tranAim.SetInteger("shape", cardManager.myCardDeck[decknum - 1].cardNumber / 13);
+                    Invoke("playSLashGo", 1.2f);
+                }
+                else
+                {
+                    Invoke("nextTurn", 1f);
+                }
             }
             else if (cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 10 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 11 || cardManager.myCardDeck[decknum - 1].cardNumber % 13 == 12)
             {
@@ -190,6 +268,7 @@ public class Card : MonoBehaviour
                 cardManager.myCardDeck[i].cardNumber = cardManager.myCardDeck[i + 1].cardNumber;
                 cardManager.myCardDeck[i].mycard.GetComponent<SpriteRenderer>().sprite = cardManager.myCardDeck[i + 1].mycard.GetComponent<SpriteRenderer>().sprite;
             }
+
             cardManager.show = true;
             gameManager.defence = false;
         }
@@ -243,5 +322,29 @@ public class Card : MonoBehaviour
         GameObject.Find("getCard").GetComponent<BoxCollider2D>().enabled = true;
         gameManager.turn = false;
         aiManager.checkCard = true;
+    }
+
+    public void playMeteor()
+    {
+        gameManager.isMeteor = true;
+        gameManager.tranAim.SetBool("isColorJoker", false);
+    }
+
+    public void playBlizzard()
+    {
+        gameManager.isBlizzard = true;
+        gameManager.tranAim.SetBool("isJoker", false);
+    }
+
+    public void playBeam()
+    {
+        gameManager.isBeam = true;
+        gameManager.tranAim.SetInteger("shape", 4);
+    }
+
+    public void playSLashGo()
+    {
+        gameManager.isSlashGo = true;
+        gameManager.tranAim.SetInteger("shape", 4);
     }
 }

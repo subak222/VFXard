@@ -33,7 +33,7 @@ public class ChangeShape : MonoBehaviour
         int random = UnityEngine.Random.Range(0, 4);
         cardManager.showCardNum = changes[random].shapeNum * 13 + 6;
         cardManager.showCard.GetComponent<SpriteRenderer>().sprite = changes[random].sprite;
-        Invoke("nextTurn", 0.5f);
+        Invoke("AiNextTurn", 0.5f);
     }
 
     public void SelectClover()
@@ -72,5 +72,10 @@ public class ChangeShape : MonoBehaviour
     {
         gameManager.turn = false;
         aiManager.checkCard = true;
+    }
+
+    public void AiNextTurn()
+    {
+        gameManager.turn = true;
     }
 }
